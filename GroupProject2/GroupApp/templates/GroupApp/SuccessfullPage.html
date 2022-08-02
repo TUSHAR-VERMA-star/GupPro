@@ -20,36 +20,37 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
+      <div class="Nav">
+        <ul >
+          <li>
             <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
           </li>
-          <li class="nav-item">
+          <li>
             <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
           </li>
-          <li class="nav-item">
+          <li>
             <a class="nav-link" href="#">About Me</a>
           </li>
-          <li class="nav-item">
+          <li>
             <a class="nav-link disabled">Contact Me</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link pageid">Creater :- {{Data.creater}}</a>
-          </li>
-          <li class="nav-item">
+          <li>
             <a class="nav-link pageid">Sheet Id :- {{Data.randomNum}}</a>
           </li>
-          <li class="nav-item ">
+          <li>
             <a class="nav-link username">{{user.get_full_name}}</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="container">
-    <h1 class="success">Your Page is Successfully Created</h1>
-    <h2 class="Pagelink"><a href="{% url 'ShowSheet' pk=Data.randomNum %}">Go To Your Sheet</a></h2>
+  <div class="container2">
+    <div class="card" style="width: 35rem;height: 23rem;">
+      <img src="{% static "create2.png" %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text"><a href="{% url 'ShowSheet' pk=Data.randomNum %}">Go To Your Sheet</a></p>
+      </div>
+    </div>
   </div>
 
 </body>

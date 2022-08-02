@@ -21,7 +21,7 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      {% comment %} <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
@@ -29,7 +29,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
           </li>
-            <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
+          <li>
+          <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
+          </li>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About Me</a>
@@ -44,22 +46,62 @@
             <a class="nav-link" href="{% url 'logoutt'%}">Log Out</a>
           </li>
         </ul>
+      </div> {% endcomment %}
+
+      <div class="Nav">
+        <ul>
+          <li>
+            <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
+          </li>
+          <li>
+          <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
+          </li>
+          </li>
+          <li>
+            <a class="nav-link" href="#">About Me</a>
+          </li>
+          <li>
+            <a class="nav-link disabled">Contact Me</a>
+          </li>
+          <li >
+            <a class="nav-link username">{{user.get_full_name}}</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{% url 'logoutt'%}">Log Out</a>
+          </li>
+        </ul>
       </div>
+      
     </div>
   </nav>
-  <div class="container">
-    <div>
-      <h1 class="success"><a href="{% url 'createSheet' %}">Create your own Sheet</a></h1>
+  <div class="container2">
+    <div class="card" style="width: 35rem;height: 23rem; margin-right:4%;">
+      <img src="{% static "create2.png" %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text"><a href="{% url 'createSheet' %}">Create your own Sheet</a></p>
+      </div>
     </div>
-    <div>
-      <h1 class="success"><a href="{% url 'joinSheet' %}">Join other's Sheet</a></h1>
+    <div class="card" style="width: 35rem;height: 23rem;">
+      <img src="{% static "join2.png" %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text"><a href="{% url 'joinSheet' %}">Join other's Sheet</a></p>
+      </div>
     </div>
+
   </div>
   {% else %}
   <a id="submit" href="{% provider_login_url 'google' %}">Login With Google</a>
   {% endif %}
+  <div class="ocean">
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
 </body>
 <script type="text/javascript">
-document.getElementById("submit").click();
+  document.getElementById("submit").click();
 </script>
+
 </html>

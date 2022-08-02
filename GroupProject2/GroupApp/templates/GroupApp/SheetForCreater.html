@@ -21,37 +21,37 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+            <div class="Nav">
+                <ul>
+                    <li >
                         <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="#">About Me</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link disabled">Contact Me</a>
                     </li>
                     {% if Data.creater != user.get_full_name %}
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link pageid">Creater :- {{Data.creater}}</a>
                     </li>
                     {% endif %}
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link pageid">Sheet Id :- {{Data.randomNum}}</a>
                     </li>
-                    <li class="nav-item ">
+                    <li>
                     <a class="nav-link username">{{user.get_full_name}}</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
         <p class="created">{{Data.created}}</p>
+    <div class="container">
         <form action="{% url 'ShowSheet' Data.id %}" onsubmit="return validate()" method='post'>{% csrf_token %}
             <input type="text" name="name" class="input-text inputtext" placeholder="Enter Title" autocomplete="off" required><br>
             <input type="text" name="description" class="input-text inputtext" placeholder="Enter Information" autocomplete="off" required><br>
@@ -59,7 +59,7 @@
         </form>
     </div>
 
-    <div class="card-content">
+    <div class="card-content" style="padding-left:1.7%;width:100vw">
         {% for i in messages %}
         <div class="card">
             {% if i.userName == user.get_full_name %}
