@@ -3,7 +3,7 @@ from secrets import randbelow
 from django import http
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Sheet, Content
+from .models import Sheet, Content, SheetPermission
 import random
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -11,7 +11,17 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def homePage(request):
-    return render(request, "GroupApp/homepage.html")
+    pendingRequest = SheetPermission.objects.all()
+    try:
+        if(request.user.email):
+            pendingRequest = SheetPermission.objects.filter(
+                ownerEmail=request.user.email, sheetPermission=False)
+    except AttributeError:
+        pass
+    return render(request, "GroupApp/homepage.html", {
+        "pendingRequest": pendingRequest,
+        "length": len(pendingRequest)
+    })
 
 
 def createSheet(request):
@@ -19,8 +29,8 @@ def createSheet(request):
         return render(request, 'GroupApp/getName.html')
     randomNumber = random.randint(1000, 1000000)
     name = request.POST.get('value', 0)
-    val = Sheet(creater=request.user.get_full_name(),
-                randomNum=randomNumber, nameOfSheet=name)
+    val = Sheet(creater=request.user.get_full_name(), createrEmail=request.user.email,
+                randomNum=randomNumber, nameOfSheet=name, type=request.POST.get('0', 0))
     val.save()
     return render(request, "GroupApp/SuccessfullPage.html", {
         'Data': val
@@ -42,25 +52,59 @@ def ShowSheet(request, pk):
             val = Sheet.objects.get(id=pk)
             if(name != "" and dis != ""):
                 print(name, dis)
-                x = Content(userName=request.user.get_full_name(), name=name, description=dis, sheet=val)
+                x = Content(userName=request.user.get_full_name(),
+                            name=name, description=dis, sheet=val)
                 x.save()
     else:
         val = Sheet.objects.get(randomNum=pk)
     messages = Content.objects.filter(sheet=val)
-    return render(request, "GroupApp/SheetForCreater.html", {
-        'Data': val,
-        'messages': messages
-    })
+    if(val.type == "Public" or val.creater == request.user.get_full_name()):
+        return render(request, "GroupApp/SheetForCreater.html", {
+            'Data': val,
+            'messages': messages
+        })
+    else:
+        try:
+            check = SheetPermission.objects.get(
+                sheetId=val.randomNum, userEmail=request.user.email)
+            if(check.sheetPermission == True):
+                return render(request, "GroupApp/SheetForCreater.html", {
+                    'Data': val,
+                    'messages': messages
+                })
+            else:
+                return render(request, "GroupApp/NoPermission.html")
+        except ObjectDoesNotExist:
+            per = SheetPermission(
+                ownerEmail=val.createrEmail, userEmail=request.user.email, sheetId=val.randomNum, sheetName=val.nameOfSheet)
+            per.save()
+            # return HttpResponse("2")
+            return render(request, "GroupApp/NoPermission.html")
 
 
 def joinSheet(request):
     # return HttpResponse("okay ji")
     return render(request, "GroupApp/joinSheet.html")
 
+
 def OurSheet(request):
     sheets = Sheet.objects.filter(creater=request.user.get_full_name())
     size = len(sheets)
-    return render(request,"GroupApp/Oursheet.html",{
-        "sheets":sheets,
-        "size":size
+    return render(request, "GroupApp/Oursheet.html", {
+        "sheets": sheets,
+        "size": size
     })
+
+
+def pending(request):
+    pendingRequest = SheetPermission.objects.filter(
+                ownerEmail=request.user.email, sheetPermission=False)
+    return render(request, "pendingRequest.html",{
+        "pendingRequest":pendingRequest
+    })
+
+def giveaccess(request, id):
+    val = SheetPermission.objects.get(pk = id)
+    val.sheetPermission = True
+    val.save()
+    return render(request, "AccessGranted.html")

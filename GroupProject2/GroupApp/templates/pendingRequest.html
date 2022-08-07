@@ -66,9 +66,6 @@
           <li>
             <a class="nav-link disabled">Contact Me</a>
           </li>
-          <li>
-          <a class="nav-link" href="{% url 'pending' %}">Pending Requests<span style="color:blue;font-weight:bolder">({{length}})</span></a>
-          </li>
           <li >
             <a class="nav-link username">{{user.get_full_name}}</a>
           </li>
@@ -80,28 +77,16 @@
       
     </div>
   </nav>
-  <div class="container2">
-    <div class="card" style="width: 35rem;height: 23rem; margin-right:4%;">
-      <img src="{% static "create2.png" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text text"><a href="{% url 'createSheet' %}">Create your own Sheet</a></p>
-      </div>
-    </div>
-    <div class="card" style="width: 35rem;height: 23rem;">
-      <img src="{% static "join2.png" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text text"><a href="{% url 'joinSheet' %}">Join other's Sheet</a></p>
-      </div>
-    </div>
+  {% for i in pendingRequest %}
+        <div class="cardlinear">
+            <span style="color:blue;font-weight:bolder">{{i.userEmail}}</span> 
+            wants to take access for your {{i.sheetName}}  sheet<a href="{% url 'giveaccess' i.id%}"><img  class="tick" src="https://w1.pngwing.com/pngs/210/132/png-transparent-green-check-mark-symbol-button-line-circle-grass-angle-logo.png" alt=""></a>
+        </div>
 
-  </div>
+        {% endfor %}
   {% else %}
   <a id="submit" href="{% provider_login_url 'google' %}">Login With Google</a>
   {% endif %}
-  <div class="ocean">
-  <div class="wave"></div>
-  <div class="wave"></div>
-</div>
 </body>
 <script type="text/javascript">
   document.getElementById("submit").click();

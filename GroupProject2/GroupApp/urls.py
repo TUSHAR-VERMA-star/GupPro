@@ -7,4 +7,6 @@ urlpatterns = [
     path('ShowSheet/<int:pk>/', views.ShowSheet, name="ShowSheet"),
     path('joinSheet/', views.joinSheet, name="joinSheet"),
     path('OurSheet/', views.OurSheet, name="OurSheet"),
+    path('pending/', views.pending, name="pending"),
+    path('giveaccess/<int:id>', views.giveaccess, name="giveaccess"),
 ]

@@ -39,9 +39,16 @@
     </div>
   </nav>
   <div class="container">
-    <h1>Enter Your Sheet Name</h1>
+    <br>
+    <h1>Enter Your Sheet Details</h1>
+    <br><br>
     <form action="{% url 'createSheet'  %}" onsubmit="return validate()" method='post'>{% csrf_token %}
         <input type="text" name="value"class="input-text inputtext" autocomplete="off" required><br>
+        <select class="form-select container"  aria-label="Default select example"name="0" style="margin:15px;text-align:center;width:70%;margin-left:195px;border-radius:10px">
+          <option value="Public" name="Public"><b>Public</b></option>
+          <option value="Private" name="Public"><b>Private</b></option>
+        </select>
+        <br><br>
         <button type="submit" class="btn btn-dark bttn">Send</button>
     </form>
     </div>
