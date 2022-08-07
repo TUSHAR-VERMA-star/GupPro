@@ -2,24 +2,28 @@
 {% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'base.css' %}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'base.css' %}">
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand heading" href="#">GupPro</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="Nav">
-        <ul >
-          <li >
+        <ul>
+          <li>
             <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
           </li>
           <li>
@@ -43,14 +47,16 @@
     <h1>Enter Your Sheet Details</h1>
     <br><br>
     <form action="{% url 'createSheet'  %}" onsubmit="return validate()" method='post'>{% csrf_token %}
-        <input type="text" name="value"class="input-text inputtext" autocomplete="off" required><br>
-        <select class="form-select container"  aria-label="Default select example"name="0" style="margin:15px;text-align:center;width:70%;margin-left:195px;border-radius:10px">
-          <option value="Public" name="Public"><b>Public</b></option>
-          <option value="Private" name="Public"><b>Private</b></option>
-        </select>
-        <br><br>
-        <button type="submit" class="btn btn-dark bttn">Send</button>
+      <input type="text" name="value" class="input-text inputtext" autocomplete="off" required><br>
+      <select class="form-select container" aria-label="Default select example" name="0"
+        style="margin:15px;text-align:center;width:70%;margin-left:195px;border-radius:10px">
+        <option value="Public" name="Public"><b>Public</b></option>
+        <option value="Private" name="Public"><b>Private</b></option>
+      </select>
+      <br><br>
+      <button type="submit" class="btn btn-dark bttn">Send</button>
     </form>
-    </div>
+  </div>
 </body>
+
 </html>

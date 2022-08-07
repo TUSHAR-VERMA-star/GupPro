@@ -122,7 +122,8 @@ def addpeople(request, id):
     useremail = request.POST.get('useremail', 0)
     sheetname = Sheet.objects.get(randomNum=id).nameOfSheet
     try:
-        chk = SheetPermission.objects.get(ownerEmail=request.user.email, userEmail=useremail, sheetId=id)
+        chk = SheetPermission.objects.get(
+            ownerEmail=request.user.email, userEmail=useremail, sheetId=id)
         chk.sheetPermission = True
         chk.giveAccess = True
         chk.save()
@@ -132,7 +133,7 @@ def addpeople(request, id):
     except ObjectDoesNotExist:
         giveaccess = SheetPermission(
             ownerEmail=request.user.email, userEmail=useremail, sheetId=id, sheetName=sheetname, sheetPermission=True)
-        giveaccess.giveAccess =True
+        giveaccess.giveAccess = True
         giveaccess.save()
         return render(request, "AddPeople.html", {
             "randomNum": id

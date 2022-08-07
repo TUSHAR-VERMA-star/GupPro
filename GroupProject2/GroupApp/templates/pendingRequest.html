@@ -21,33 +21,6 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      {% comment %} <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
-          </li>
-          <li>
-          <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
-          </li>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Contact Me</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link username">{{user.get_full_name}}</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'logoutt'%}">Log Out</a>
-          </li>
-        </ul>
-      </div> {% endcomment %}
-
       <div class="Nav">
         <ul>
           <li>
@@ -57,7 +30,7 @@
             <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
           </li>
           <li>
-          <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
+            <a class="nav-link" href="{% url 'OurSheet' %}">Your's Sheets</a>
           </li>
           </li>
           <li>
@@ -66,7 +39,7 @@
           <li>
             <a class="nav-link disabled">Contact Me</a>
           </li>
-          <li >
+          <li>
             <a class="nav-link username">{{user.get_full_name}}</a>
           </li>
           <li>
@@ -74,17 +47,21 @@
           </li>
         </ul>
       </div>
-      
+
     </div>
   </nav>
   {% for i in pendingRequest %}
-        <div class="cardlinear">
-            <span style="color:blue;font-weight:bolder">{{i.userEmail}}</span> 
-            wants to take access for your {{i.sheetName}}  sheet<a href="{% url 'giveaccess' i.id%}"><img  class="tick" src="https://w1.pngwing.com/pngs/210/132/png-transparent-green-check-mark-symbol-button-line-circle-grass-angle-logo.png" alt=""></a>
-            <a href="{% url 'noaccess' i.id%}"><img  class="cross" src="https://banner2.cleanpng.com/20180403/aiw/kisspng-computer-icons-button-clip-art-dialog-5ac3eb551de1c4.2586835115227892051224.jpg" alt=""></a>
-        </div>
+  <div class="cardlinear">
+    <span style="color:blue;font-weight:bolder">{{i.userEmail}}</span>
+    wants to take access for your {{i.sheetName}} sheet<a href="{% url 'giveaccess' i.id%}"><img class="tick"
+        src="https://w1.pngwing.com/pngs/210/132/png-transparent-green-check-mark-symbol-button-line-circle-grass-angle-logo.png"
+        alt=""></a>
+    <a href="{% url 'noaccess' i.id%}"><img class="cross"
+        src="https://banner2.cleanpng.com/20180403/aiw/kisspng-computer-icons-button-clip-art-dialog-5ac3eb551de1c4.2586835115227892051224.jpg"
+        alt=""></a>
+  </div>
 
-        {% endfor %}
+  {% endfor %}
   {% else %}
   <a id="submit" href="{% provider_login_url 'google' %}">Login With Google</a>
   {% endif %}

@@ -22,20 +22,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="Nav">
-                <ul >
-                    <li >
+                <ul>
+                    <li>
                         <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
                     </li>
-                    <li >
+                    <li>
                         <a class="nav-link" href="{% url 'joinSheet' %}">Join Sheet</a>
                     </li>
-                    <li >
+                    <li>
                         <a class="nav-link" href="#">About Me</a>
                     </li>
-                    <li >
+                    <li>
                         <a class="nav-link disabled">Contact Me</a>
                     </li>
-                    <li >
+                    <li>
                         <a class="nav-link username">{{user.get_full_name}}</a>
                     </li>
                 </ul>

@@ -3,41 +3,47 @@
 :root {
     font-family: 'Quicksand', sans-serif;
 }
-body{
+
+body {
     background: url("https://innovatewebdevelopment.com/wp-content/uploads/2020/07/comingsoon.jpg");
     /* background: url("https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-double-twelve-promotion-professional-technology-flight-machine-main-figure-psd-template-image_179782.jpg");  */
     background-position: center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     width: 100vw;
 }
 
-.bttn{
+.bttn {
     margin: 10px;
     width: 10%;
 }
-.container{
+
+.container {
     text-align: center;
 }
-.inputtext{
+
+.inputtext {
     width: 70%;
     margin: 4px;
     padding: 5px;
     border-radius: 10px;
 }
-.success{
+
+.success {
     background-color: #2a283d;
     border-radius: 50px;
     margin: 30px;
     padding: 5px;
     box-shadow: 2px 4px rgb(221, 210, 232);
 }
-.pageid{
+
+.pageid {
     font-weight: bolder;
     float: left;
 }
-.Pagelink{
+
+.Pagelink {
     color: whitesmoke;
     background-color: rgb(47, 3, 3);
     border-radius: 30px;
@@ -45,27 +51,32 @@ body{
     padding: 10px;
     margin-left: 2%;
 }
-a{
+
+a {
     text-decoration: none;
     color: teal;
 }
-.heading{
+
+.heading {
     font-weight: bolder;
 }
-.created{
+
+.created {
     color: aliceblue;
     margin: 5px;
     font-weight: bolder;
     text-align: left;
     margin-left: 1%;
 }
-.card-content{
+
+.card-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     /* padding-left: 1.7%; */
     /* width: 100vw; */
 }
-.card{
+
+.card {
     border: 4px solid teal;
     display: flex;
     flex-direction: column;
@@ -75,58 +86,66 @@ a{
     padding: 4px;
     border-radius: 20px;
 }
-.card:hover{
+
+.card:hover {
     background-color: #a0a9aa;
 }
-.title{
+
+.title {
     font-size: 30px;
     font-weight: bolder;
 }
-.des{
+
+.des {
     font-size: 15px;
 }
-h1{
+
+h1 {
     color: white;
 }
 
 
-.collapse{
+.collapse {
     /* background-color: #6B5B95; */
     display: inline;
     width: 20%;
     float: right;
     /* margin-left: 30%; */
 }
-.username{
+
+.username {
     font-weight: bolder;
     color: red;
 }
-.navbar{
+
+.navbar {
     margin-bottom: 10px;
-    
+
 }
-.container2{
+
+.container2 {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 5%;
 }
-.card{
-    box-shadow: 5px 5px black ;
+
+.card {
+    box-shadow: 5px 5px black;
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.1);
 }
 
-.text{
+.text {
     font-size: 30px;
     font-weight: bolder;
     text-align: center;
 }
 
-.text a{
-    color:teal;
+.text a {
+    color: teal;
 }
 
 .dot {
@@ -135,12 +154,12 @@ h1{
     background-color: red;
     border-radius: 50%;
     display: inline-block;
-  }
+}
 
-.sec{
+.sec {
     position: relative;
     right: -13px;
-    top:-22px;
+    top: -22px;
 }
 
 .counter.counter-lg {
@@ -148,45 +167,47 @@ h1{
 }
 
 
-.navbar{
+.navbar {
     background-color: #c9bde8;
 }
 
-.Nav{
-    width:90%;
+.Nav {
+    width: 90%;
     position: absolute;
 }
 
-ul li{
+ul li {
     /* margin: 3%;  */
     margin-bottom: 2.3%;
     margin-left: 4%;
     margin-top: 3.5%;
 }
 
-ul{
+ul {
     list-style: none;
     display: flex;
     /* float:right; */
     /* width:60%; */
 }
 
-ul li:hover{
-    color:#6B5B95;
+ul li:hover {
+    color: #6B5B95;
     font-weight: bolder;
     font-size: large;
     border-top: 5px solid #eb3e09;
     margin-top: 1.7%;
     padding-top: 1%;
 }
-ul li a:active{
-    color:#eb3e09;
+
+ul li a:active {
+    color: #eb3e09;
 }
-.selectbar{
+
+.selectbar {
     margin: 10px;
 }
-.cardlinear
-{
+
+.cardlinear {
     background-color: aliceblue;
     margin: 5%;
     padding: 2%;
@@ -195,19 +216,15 @@ ul li a:active{
     border-radius: 20px;
 }
 
-.tick{
+.tick {
     width: 40px;
     height: 40px;
     margin-left: 1%;
     border-radius: 200px;
 }
-.cross{
+
+.cross {
     width: 50px;
     height: 35px;
     border-radius: 200px;
 }
-
-
-
-
-

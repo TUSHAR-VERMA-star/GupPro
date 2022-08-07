@@ -12,4 +12,3 @@ urlpatterns = [
     path('noaccess/<int:id>', views.noaccess, name="noaccess"),
     path('addpeople/<int:id>', views.addpeople, name="addpeople"),
 ]
-

@@ -23,7 +23,7 @@
             </button>
             <div class="Nav">
                 <ul>
-                    <li >
+                    <li>
                         <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
                     </li>
                     <li>
@@ -44,7 +44,7 @@
                         <a class="nav-link pageid">Sheet Id :- {{Data.randomNum}}</a>
                     </li>
                     <li>
-                    <a class="nav-link username">{{user.get_full_name}}</a>
+                        <a class="nav-link username">{{user.get_full_name}}</a>
                     </li>
                 </ul>
             </div>
@@ -53,15 +53,18 @@
     <div style="display:flex;flex-direction:row">
         <p class="created">{{Data.created}}</p>
         {% if Data.creater == user.get_full_name %}
-            <form action="{% url 'addpeople' Data.randomNum %}" onsubmit="return validate()" style="margin-left:75%" method='post'>{% csrf_token %}
-                <button type="submit" class="btn btn-dark bttn" style="height:50px;width:100px" >AddPeople</button>
-            </form>
+        <form action="{% url 'addpeople' Data.randomNum %}" onsubmit="return validate()" style="margin-left:75%"
+            method='post'>{% csrf_token %}
+            <button type="submit" class="btn btn-dark bttn" style="height:50px;width:100px">AddPeople</button>
+        </form>
         {% endif %}
     </div>
     <div class="container">
         <form action="{% url 'ShowSheet' Data.id %}" onsubmit="return validate()" method='post'>{% csrf_token %}
-            <input type="text" name="name" class="input-text inputtext" placeholder="Enter Title" autocomplete="off" required><br>
-            <input type="text" name="description" class="input-text inputtext" placeholder="Enter Information" autocomplete="off" required><br>
+            <input type="text" name="name" class="input-text inputtext" placeholder="Enter Title" autocomplete="off"
+                required><br>
+            <input type="text" name="description" class="input-text inputtext" placeholder="Enter Information"
+                autocomplete="off" required><br>
             <button type="submit" class="btn btn-dark bttn">Send</button>
         </form>
     </div>
@@ -69,9 +72,9 @@
         {% for i in messages %}
         <div class="card">
             {% if i.userName == user.get_full_name %}
-                <p style="border-bottom:2px dotted black;text-align:center;color:red;font-weight:bold;">{{i.userName}}</p>
+            <p style="border-bottom:2px dotted black;text-align:center;color:red;font-weight:bold;">{{i.userName}}</p>
             {% else %}
-                <p style="border-bottom:2px dotted black;text-align:center;">{{i.userName}}</p>
+            <p style="border-bottom:2px dotted black;text-align:center;">{{i.userName}}</p>
             {% endif %}
             <h2 class="title">{{i.name}}</h2>
             <h2 class="des">{{i.description}}</h2>
