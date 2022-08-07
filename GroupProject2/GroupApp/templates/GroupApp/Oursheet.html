@@ -53,6 +53,7 @@
                 <h2 class="title"><a href="{% url 'ShowSheet' i.randomNum %}">{{i.nameOfSheet}}</a></h2>
                 <h2 class="title">{{i.randomNum}}</h2>
                 <p>{{i.created}}</p>
+                <p style="font-weight:bolder;color:blue">{{i.type|upper}}</p>
             </div>
             {% endfor %}
         </div>

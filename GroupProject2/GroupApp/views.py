@@ -98,19 +98,42 @@ def OurSheet(request):
 
 def pending(request):
     pendingRequest = SheetPermission.objects.filter(
-                ownerEmail=request.user.email, sheetPermission=False, giveAccess=True)
-    return render(request, "pendingRequest.html",{
-        "pendingRequest":pendingRequest
+        ownerEmail=request.user.email, sheetPermission=False, giveAccess=True)
+    return render(request, "pendingRequest.html", {
+        "pendingRequest": pendingRequest
     })
 
+
 def giveaccess(request, id):
-    val = SheetPermission.objects.get(pk = id)
+    val = SheetPermission.objects.get(pk=id)
     val.sheetPermission = True
     val.save()
     return render(request, "AccessGranted.html")
 
+
 def noaccess(request, id):
-    val = SheetPermission.objects.get(pk = id)
+    val = SheetPermission.objects.get(pk=id)
     val.giveAccess = False
     val.save()
     return render(request, "NoAccessGranted.html")
+
+
+def addpeople(request, id):
+    useremail = request.POST.get('useremail', 0)
+    sheetname = Sheet.objects.get(randomNum=id).nameOfSheet
+    try:
+        chk = SheetPermission.objects.get(ownerEmail=request.user.email, userEmail=useremail, sheetId=id)
+        chk.sheetPermission = True
+        chk.giveAccess = True
+        chk.save()
+        return render(request, "AddPeople.html", {
+            "randomNum": id
+        })
+    except ObjectDoesNotExist:
+        giveaccess = SheetPermission(
+            ownerEmail=request.user.email, userEmail=useremail, sheetId=id, sheetName=sheetname, sheetPermission=True)
+        giveaccess.giveAccess =True
+        giveaccess.save()
+        return render(request, "AddPeople.html", {
+            "randomNum": id
+        })

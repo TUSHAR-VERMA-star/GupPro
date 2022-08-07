@@ -10,4 +10,6 @@ urlpatterns = [
     path('pending/', views.pending, name="pending"),
     path('giveaccess/<int:id>', views.giveaccess, name="giveaccess"),
     path('noaccess/<int:id>', views.noaccess, name="noaccess"),
+    path('addpeople/<int:id>', views.addpeople, name="addpeople"),
 ]
+

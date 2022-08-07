@@ -50,7 +50,14 @@
             </div>
         </div>
     </nav>
+    <div style="display:flex;flex-direction:row">
         <p class="created">{{Data.created}}</p>
+        {% if Data.creater == user.get_full_name %}
+            <form action="{% url 'addpeople' Data.randomNum %}" onsubmit="return validate()" style="margin-left:75%" method='post'>{% csrf_token %}
+                <button type="submit" class="btn btn-dark bttn" style="height:50px;width:100px" >AddPeople</button>
+            </form>
+        {% endif %}
+    </div>
     <div class="container">
         <form action="{% url 'ShowSheet' Data.id %}" onsubmit="return validate()" method='post'>{% csrf_token %}
             <input type="text" name="name" class="input-text inputtext" placeholder="Enter Title" autocomplete="off" required><br>
@@ -58,7 +65,6 @@
             <button type="submit" class="btn btn-dark bttn">Send</button>
         </form>
     </div>
-
     <div class="card-content" style="padding-left:1.7%;width:100vw">
         {% for i in messages %}
         <div class="card">

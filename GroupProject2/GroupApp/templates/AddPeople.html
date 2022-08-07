@@ -13,7 +13,6 @@
 </head>
 
 <body>
-  {% if user.is_authenticated %}
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand heading" href="{% url 'homepage' %}">GupPro</a>
@@ -21,6 +20,7 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="Nav">
         <ul>
           <li>
@@ -39,11 +39,6 @@
           <li>
             <a class="nav-link disabled">Contact Me</a>
           </li>
-          {% if length != 0 %}
-          <li>
-          <a class="nav-link" href="{% url 'pending' %}">Pending Requests<span style="color:blue;font-weight:bolder">({{length}})</span></a>
-          </li>
-          {% endif %}
           <li >
             <a class="nav-link username">{{user.get_full_name}}</a>
           </li>
@@ -55,31 +50,13 @@
       
     </div>
   </nav>
-  <div class="container2">
-    <div class="card" style="width: 35rem;height: 23rem; margin-right:4%;">
-      <img src="{% static "create2.png" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text text"><a href="{% url 'createSheet' %}">Create your own Sheet</a></p>
-      </div>
+  <br><br>
+    <div class="container">
+        <form action="{% url 'addpeople' randomNum %}" onsubmit="return validate()" method='post'>{% csrf_token %}
+            <input type="email" name="useremail" class="input-text inputtext" placeholder="Enter Email" autocomplete="off" required><br>
+            <button type="submit" class="btn btn-dark bttn">Send</button>
+        </form>
     </div>
-    <div class="card" style="width: 35rem;height: 23rem;">
-      <img src="{% static "join2.png" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text text"><a href="{% url 'joinSheet' %}">Join other's Sheet</a></p>
-      </div>
-    </div>
-
-  </div>
-  {% else %}
-  <a id="submit" href="{% provider_login_url 'google' %}">Login With Google</a>
-  {% endif %}
-  <div class="ocean">
-  <div class="wave"></div>
-  <div class="wave"></div>
-</div>
-</body>
-<script type="text/javascript">
-  document.getElementById("submit").click();
 </script>
 
 </html>
