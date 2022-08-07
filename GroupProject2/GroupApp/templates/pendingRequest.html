@@ -81,6 +81,7 @@
         <div class="cardlinear">
             <span style="color:blue;font-weight:bolder">{{i.userEmail}}</span> 
             wants to take access for your {{i.sheetName}}  sheet<a href="{% url 'giveaccess' i.id%}"><img  class="tick" src="https://w1.pngwing.com/pngs/210/132/png-transparent-green-check-mark-symbol-button-line-circle-grass-angle-logo.png" alt=""></a>
+            <a href="{% url 'noaccess' i.id%}"><img  class="cross" src="https://banner2.cleanpng.com/20180403/aiw/kisspng-computer-icons-button-clip-art-dialog-5ac3eb551de1c4.2586835115227892051224.jpg" alt=""></a>
         </div>
 
         {% endfor %}

@@ -201,10 +201,11 @@ ul li a:active{
     margin-left: 1%;
     border-radius: 200px;
 }
-/* .mainHeading{
-    display: flex;
-    flex-direction: column;
-} */`
+.cross{
+    width: 50px;
+    height: 35px;
+    border-radius: 200px;
+}
 
 
 

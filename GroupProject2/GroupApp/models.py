@@ -1,3 +1,4 @@
+from os import access
 from statistics import mode
 from django.db import models
 
@@ -29,6 +30,6 @@ class SheetPermission(models.Model):
     sheetId = models.IntegerField()
     sheetName = models.CharField(max_length=100)
     sheetPermission = models.BooleanField(default=False)
-
+    giveAccess = models.BooleanField(default=True)
     def __str__(self) -> str:
         return self.userEmail

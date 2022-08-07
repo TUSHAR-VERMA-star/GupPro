@@ -15,7 +15,7 @@ def homePage(request):
     try:
         if(request.user.email):
             pendingRequest = SheetPermission.objects.filter(
-                ownerEmail=request.user.email, sheetPermission=False)
+                ownerEmail=request.user.email, sheetPermission=False, giveAccess=True)
     except AttributeError:
         pass
     return render(request, "GroupApp/homepage.html", {
@@ -98,7 +98,7 @@ def OurSheet(request):
 
 def pending(request):
     pendingRequest = SheetPermission.objects.filter(
-                ownerEmail=request.user.email, sheetPermission=False)
+                ownerEmail=request.user.email, sheetPermission=False, giveAccess=True)
     return render(request, "pendingRequest.html",{
         "pendingRequest":pendingRequest
     })
@@ -108,3 +108,9 @@ def giveaccess(request, id):
     val.sheetPermission = True
     val.save()
     return render(request, "AccessGranted.html")
+
+def noaccess(request, id):
+    val = SheetPermission.objects.get(pk = id)
+    val.giveAccess = False
+    val.save()
+    return render(request, "NoAccessGranted.html")

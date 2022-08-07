@@ -9,4 +9,5 @@ urlpatterns = [
     path('OurSheet/', views.OurSheet, name="OurSheet"),
     path('pending/', views.pending, name="pending"),
     path('giveaccess/<int:id>', views.giveaccess, name="giveaccess"),
+    path('noaccess/<int:id>', views.noaccess, name="noaccess"),
 ]
